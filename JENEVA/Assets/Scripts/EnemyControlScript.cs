@@ -26,6 +26,9 @@ public class EnemyControlScript : MonoBehaviour
             {
                 UnitNear = true;
                 agent.SetDestination(unit.transform.position);
+                if (dist.magnitude < 1) {
+                    Destroy(unit);
+                }
                 break;
             }
 
