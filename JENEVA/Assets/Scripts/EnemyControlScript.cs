@@ -27,7 +27,8 @@ public class EnemyControlScript : MonoBehaviour
                 UnitNear = true;
                 agent.SetDestination(unit.transform.position);
                 if (dist.magnitude < 1) {
-                    Destroy(unit);
+                    anim = unit.GetComponentInChildren<Animator>();
+                    StartCoroutine(waiter(unit));
                 }
                 break;
             }
@@ -37,6 +38,12 @@ public class EnemyControlScript : MonoBehaviour
         {
             agent.SetDestination(GameObject.Find("Target").transform.position);
         }
+    }
+    IEnumerator waiter(GameObject unit)
+    {
+        anim.SetInteger("AnimationPar", 4);
+        yield return new WaitForSeconds(1.5f);
+        Destroy(unit);
     }
 
 }
