@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameCheck : MonoBehaviour
 {
@@ -13,9 +15,9 @@ public class GameCheck : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (GameObject.FindGameObjectsWithTag("Unit") == null)
-        { 
-
+        if (GameObject.FindGameObjectsWithTag("Unit").Length == 0 )
+        {
+            SceneManager.LoadScene("Menu");
         }
     }
 }
