@@ -42,7 +42,7 @@ public class EnemyControlScript : MonoBehaviour
     IEnumerator waiter(GameObject unit)
     {
         anim.SetInteger("AnimationPar", 4);
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(0.7f);
         Destroy(unit);
     }
 
