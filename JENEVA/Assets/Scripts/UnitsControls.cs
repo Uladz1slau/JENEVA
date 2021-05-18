@@ -8,7 +8,6 @@ public class UnitsControls : MonoBehaviour
     private NavMeshAgent agent;
     private Animator anim;
     RaycastHit hit;
-    bool SpeedFlag;
 
     // Start is called before the first frame update
     void Start()
@@ -16,7 +15,6 @@ public class UnitsControls : MonoBehaviour
         mainCamera = Camera.main;
         agent = GetComponent<NavMeshAgent>();
         anim = gameObject.GetComponentInChildren<Animator>();
-        SpeedFlag = false;
     }
 
     // Update is called once per frame
@@ -31,14 +29,12 @@ public class UnitsControls : MonoBehaviour
             }
         }
         IfStopped();
-        if (agent.velocity != new Vector3(0, 0, 0)) SpeedFlag = true;
     }
     void IfStopped()
     {
-        if (agent.velocity == new Vector3(0, 0, 0) && SpeedFlag)
+        if ((agent.destination - gameObject.transform.position).magnitude < agent.stoppingDistance)
         {
             anim.SetInteger("AnimationPar", 0);
-            SpeedFlag = false;
         }
     }
 }
