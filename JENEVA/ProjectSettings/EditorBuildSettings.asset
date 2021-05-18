@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/JENEVA1.0.unity
-    guid: e2f9c30bdcc25674fb9ad3b9b7f8bcde
-  - enabled: 1
     path: Assets/Scenes/Menu.unity
     guid: 63be99a211a166b4cadc4a70a61f9b87
+  - enabled: 1
+    path: Assets/Scenes/JENEVA1.0.unity
+    guid: e2f9c30bdcc25674fb9ad3b9b7f8bcde
   m_configObjects: {}

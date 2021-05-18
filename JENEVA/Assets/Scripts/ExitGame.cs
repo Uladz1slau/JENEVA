@@ -12,6 +12,6 @@ public class ExitGame : MonoBehaviour
     }
     void TaskOnClick()
     {
-        Application.Quit();
+        Application.Quit(0);
     }
 }
