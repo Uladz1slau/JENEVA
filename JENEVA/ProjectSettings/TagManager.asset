@@ -8,6 +8,7 @@ TagManager:
   - Enemy
   - MobileObj
   - Arm
+  - DestroyObj
   layers:
   - Default
   - TransparentFX
