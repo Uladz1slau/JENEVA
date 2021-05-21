@@ -9,6 +9,7 @@ TagManager:
   - MobileObj
   - Arm
   - DestroyObj
+  - Ship
   layers:
   - Default
   - TransparentFX

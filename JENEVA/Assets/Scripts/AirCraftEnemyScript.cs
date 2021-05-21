@@ -4,21 +4,30 @@ using UnityEngine;
 
 public class AirCraftEnemyScript : MonoBehaviour
 {
+    public float speed = -0.1f;
     // Start is called before the first frame update
     void Start()
     {
         
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+
     }
+
+    // Update is called once per frame
+    void FixedUpdate()
+    {
+        gameObject.transform.position += new Vector3(0, speed, 0);
+    }
+
+
 
     void OnTriggerEnter(Collider other)
     {
-        StartCoroutine(waiter());
+        if (other.gameObject.tag == "Ship")
+            StartCoroutine(waiter());
     }
     IEnumerator waiter()
     {

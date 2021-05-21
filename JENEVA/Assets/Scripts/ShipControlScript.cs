@@ -19,12 +19,16 @@ public class ShipControlScript : MonoBehaviour
 
     void Update()
     {
-
+        if (Input.GetMouseButtonDown(0) || Input.GetKeyUp(KeyCode.Space))
+        {
+            Shoot();
+        }
     }
     // Update is called once per frame
     void FixedUpdate()
     {
         gameObject.transform.rotation = Quaternion.Euler(-90, 0, 0);
+
         if (Input.GetKey(KeyCode.W))
         {
             if (gameObject.transform.position.y + Speed < UpBorder)
@@ -56,10 +60,6 @@ public class ShipControlScript : MonoBehaviour
                 gameObject.transform.position = new Vector3(gameObject.transform.position.x + Speed, gameObject.transform.position.y, gameObject.transform.position.z);
                 gameObject.transform.rotation = Quaternion.Euler(-90, -20, 0);
             }
-        }
-        if (Input.GetMouseButtonDown(0))
-        {
-            Shoot();
         }
     }
     void Shoot()
