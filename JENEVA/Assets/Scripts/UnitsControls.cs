@@ -11,6 +11,7 @@ public class UnitsControls : MonoBehaviour
     bool HaveObject;
     public float PickingDist = 1;
     GameObject ChosenItem;
+    GameObject scene;
 
     // Start is called before the first frame update
     void Start()
@@ -35,6 +36,25 @@ public class UnitsControls : MonoBehaviour
         }
         IfStopped();
 
+        //смена уровня
+        if ((Input.GetKeyDown(KeyCode.L)))
+        {
+            GameObject[] scenes = GameObject.FindGameObjectsWithTag("StartScene");
+            float dist = -1;
+            foreach (GameObject item in scenes)
+            {
+                float curdist = (item.transform.position - gameObject.transform.position).magnitude;
+                if (curdist < dist || dist == -1)
+                {
+                    scene = item;
+                    dist = curdist;
+                }
+            }
+            if (dist != -1 && dist < PickingDist)
+            {
+                scene.SendMessage("Load");
+            }
+        }
 
         //подбор предмета
         if ((Input.GetKeyDown(KeyCode.E)))
@@ -55,7 +75,7 @@ public class UnitsControls : MonoBehaviour
                 if (dist != -1 && dist < PickingDist)
                 {
                     HaveObject = true;
-                }
+                }               
             }
             else
             {

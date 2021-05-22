@@ -82,6 +82,6 @@ public class ShipControlScript : MonoBehaviour
         gameObject.GetComponentInChildren<Animator>().SetBool("IsAlive", false);
         yield return new WaitForSeconds(5f);
         Destroy(gameObject);
-        SceneManager.LoadScene(sceneName);
+        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 }
