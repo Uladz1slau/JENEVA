@@ -145,7 +145,7 @@ MonoBehaviour:
   speed: -0.1
   prefab: {fileID: 7806530100872834060, guid: 634ead93da6800a4ba0f4b553cfbebbe, type: 3}
   StartTime: 0
-  RepTime: 1
+  RepTime: 3
 --- !u!1001 &8228137974169194618
 PrefabInstance:
   m_ObjectHideFlags: 0

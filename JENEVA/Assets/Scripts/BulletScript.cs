@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
+    public string NoDestroytag;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +21,7 @@ public class BulletScript : MonoBehaviour
     }
     void OnTriggerEnter(Collider other)
     {
-        Destroy(gameObject);
+        if (other.gameObject.tag != NoDestroytag)
+            Destroy(gameObject);
     }
 }

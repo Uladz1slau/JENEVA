@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ShipControlScript : MonoBehaviour
 {
@@ -9,8 +10,10 @@ public class ShipControlScript : MonoBehaviour
     public float DownBorder = 10f;
     public float LeftBorder = 10f;
     public float RightBorder = 10f;
-    public GameObject prefab;
+    public GameObject bulletprefab;
+    public GameObject loseprefab;
     public float force = 10f;
+    public string sceneName;
     // Start is called before the first frame update
     void Start()
     {
@@ -64,19 +67,21 @@ public class ShipControlScript : MonoBehaviour
     }
     void Shoot()
     {
-        GameObject clone = Instantiate(prefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 5, 50), Quaternion.identity);
+        GameObject clone = Instantiate(bulletprefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 5, 50), Quaternion.identity);
         clone.GetComponent<Rigidbody>().AddForce(force * new Vector3(0, 1, 0));
     }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "DestroyObj")
+        if (other.gameObject.tag != "Ship")
             StartCoroutine(waiter());
     }
     IEnumerator waiter()
     {
+        GameObject clone = Instantiate(loseprefab, new Vector3(0, 0, 50), Quaternion.identity);
         gameObject.GetComponentInChildren<Animator>().SetBool("IsAlive", false);
-        yield return new WaitForSeconds(0.7f);
+        yield return new WaitForSeconds(5f);
         Destroy(gameObject);
+        SceneManager.LoadScene(sceneName);
     }
 }

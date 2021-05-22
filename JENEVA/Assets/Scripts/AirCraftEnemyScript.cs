@@ -29,7 +29,7 @@ public class AirCraftEnemyScript : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Ship")
+        if (other.gameObject.tag != gameObject.tag)
             StartCoroutine(waiter());
     }
     IEnumerator waiter()
@@ -44,7 +44,7 @@ public class AirCraftEnemyScript : MonoBehaviour
         Ray ray = new Ray(new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 20, 50), new Vector3(0, -1, 0));
         if (Physics.Raycast(ray, out hit))
         {
-            if (hit.collider.tag != "DestroyObj")
+            if (hit.collider.tag != gameObject.tag)
             {
                 GameObject clone = Instantiate(prefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - 20, 50), Quaternion.identity);
                 clone.GetComponent<Rigidbody>().AddForce(500 * new Vector3(0, -1, 0));
