@@ -67,4 +67,16 @@ public class ShipControlScript : MonoBehaviour
         GameObject clone = Instantiate(prefab, new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 5, 50), Quaternion.identity);
         clone.GetComponent<Rigidbody>().AddForce(force * new Vector3(0, 1, 0));
     }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.tag == "DestroyObj")
+            StartCoroutine(waiter());
+    }
+    IEnumerator waiter()
+    {
+        gameObject.GetComponentInChildren<Animator>().SetBool("IsAlive", false);
+        yield return new WaitForSeconds(0.7f);
+        Destroy(gameObject);
+    }
 }

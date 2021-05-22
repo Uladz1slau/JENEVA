@@ -13,7 +13,7 @@ public class BulletScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(gameObject.transform.position.y > 50 || gameObject.transform.position.y < -50)
+        if(gameObject.transform.position.y > 100 || gameObject.transform.position.y < -100)
         {
             Destroy(gameObject);
         }
