@@ -23,6 +23,7 @@ public class GameCheck : MonoBehaviour
         if (Storage.AirCraftWin && Storage.PazzleWin)
         {
             StartCoroutine(waiter());
+            Storage.PazzleWin = false;
         }
     }
     IEnumerator waiter()
