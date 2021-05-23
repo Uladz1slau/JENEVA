@@ -19,5 +19,9 @@ public class GameCheck : MonoBehaviour
         {
             SceneManager.LoadScene("Menu");
         }
+        if (Storage.AirCraftWin && Storage.PazzleWin)
+        {
+            SceneManager.LoadScene("Menu");
+        }
     }
 }

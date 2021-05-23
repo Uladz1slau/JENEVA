@@ -98,6 +98,7 @@ public class ShipControlScript : MonoBehaviour
     }
     IEnumerator winwaiter()
     {
+        Storage.AirCraftWin = true;
         Destroy(enter);
         Instantiate(winprefab, new Vector3(0, 0, 50), Quaternion.identity);
         yield return new WaitForSeconds(3f);

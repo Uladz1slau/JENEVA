@@ -28,6 +28,7 @@ public class Player : MonoBehaviour
     {
         if(this.CompareTag("Player") && other.CompareTag("Finish"))
         {
+            Storage.PazzleWin = true;
             SceneManager.LoadScene("JENEVA1.0");
         }
     }
