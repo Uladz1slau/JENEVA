@@ -12,12 +12,16 @@ public class ShipControlScript : MonoBehaviour
     public float RightBorder = 10f;
     public GameObject bulletprefab;
     public GameObject loseprefab;
+    public GameObject enterprefab;
+    public GameObject winprefab;
+    GameObject enter;
     public float force = 10f;
-    public string sceneName;
+    public string losesceneName;
+    public string winsceneName;
     // Start is called before the first frame update
     void Start()
     {
-        
+        enter = Instantiate(enterprefab, new Vector3(0, 0, 50), Quaternion.identity);
     }
 
     void Update()
@@ -73,15 +77,30 @@ public class ShipControlScript : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag != "Ship")
-            StartCoroutine(waiter());
+        if (other.gameObject.tag == "MobileObj")
+        {
+            StartCoroutine(winwaiter());
+        }
+        else
+        {
+            if (other.gameObject.tag != "Ship")
+                StartCoroutine(losewaiter());
+        }
     }
-    IEnumerator waiter()
+    IEnumerator losewaiter()
     {
-        GameObject clone = Instantiate(loseprefab, new Vector3(0, 0, 50), Quaternion.identity);
+        Destroy(enter);
+        Instantiate(loseprefab, new Vector3(0, 0, 50), Quaternion.identity);
         gameObject.GetComponentInChildren<Animator>().SetBool("IsAlive", false);
         yield return new WaitForSeconds(5f);
         Destroy(gameObject);
-        SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
+        SceneManager.LoadScene(losesceneName);
+    }
+    IEnumerator winwaiter()
+    {
+        Destroy(enter);
+        Instantiate(winprefab, new Vector3(0, 0, 50), Quaternion.identity);
+        yield return new WaitForSeconds(3f);
+        SceneManager.LoadScene(winsceneName);
     }
 }

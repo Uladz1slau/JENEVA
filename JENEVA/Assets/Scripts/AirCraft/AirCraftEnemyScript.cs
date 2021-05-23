@@ -8,6 +8,8 @@ public class AirCraftEnemyScript : MonoBehaviour
     public GameObject prefab;
     public float StartTime;
     public float RepTime;
+    public int MaxHitCounter = 3;
+    int HitCounter = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -29,7 +31,8 @@ public class AirCraftEnemyScript : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag != gameObject.tag)
+        HitCounter++;
+        if (other.gameObject.tag != gameObject.tag && HitCounter >= MaxHitCounter)
             StartCoroutine(waiter());
     }
     IEnumerator waiter()

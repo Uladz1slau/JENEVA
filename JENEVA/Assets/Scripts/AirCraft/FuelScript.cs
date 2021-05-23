@@ -1,11 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class LoadLevel : MonoBehaviour
+public class FuelScript : MonoBehaviour
 {
-    public string sceneName;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,11 +13,6 @@ public class LoadLevel : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
-    }
-
-    void Load()
-    {
-        SceneManager.LoadScene(sceneName);
+        gameObject.transform.position += new Vector3(0, -0.01f, 0);
     }
 }
