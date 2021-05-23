@@ -20,7 +20,7 @@ public class GameCheck : MonoBehaviour
         {
             SceneManager.LoadScene("Menu");
         }
-        if (Storage.AirCraftWin && Storage.PazzleWin)
+        if (Storage.CodeCheck)
         {
             StartCoroutine(waiter());
             Storage.PazzleWin = false;

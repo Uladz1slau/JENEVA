@@ -16,7 +16,8 @@ public class PlayGame : MonoBehaviour
     void TaskOnClick()
     {
         Storage.AirCraftWin = false;
-        Storage.PazzleWin = false;  
+        Storage.PazzleWin = false;
+        Storage.CodeCheck = false;
         Storage.heropos = new Vector3(20, 0, 0);
         SceneManager.LoadScene(sceneName);
     }
