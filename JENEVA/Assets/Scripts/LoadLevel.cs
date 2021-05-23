@@ -20,7 +20,8 @@ public class LoadLevel : MonoBehaviour
 
     void Load()
     {
-        Storage.heropos = GameObject.FindWithTag("Unit").transform.position;
+        GameObject hero = GameObject.Find("HERO!!!");
+        Storage.heropos = new Vector3(hero.transform.position.x, hero.transform.position.y, hero.transform.position.z);
         SceneManager.LoadScene(sceneName);
     }
 }

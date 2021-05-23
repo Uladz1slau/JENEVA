@@ -20,6 +20,7 @@ public class UnitsControls : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
         anim = gameObject.GetComponentInChildren<Animator>();
         HaveObject = false;
+        gameObject.transform.position = Storage.heropos;
     }
 
     // Update is called once per frame
