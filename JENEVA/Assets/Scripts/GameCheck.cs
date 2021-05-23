@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameCheck : MonoBehaviour
 {
+    public GameObject winprefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,7 +22,13 @@ public class GameCheck : MonoBehaviour
         }
         if (Storage.AirCraftWin && Storage.PazzleWin)
         {
-            SceneManager.LoadScene("Menu");
+            StartCoroutine(waiter());
         }
+    }
+    IEnumerator waiter()
+    {
+        Instantiate(winprefab);
+        yield return new WaitForSeconds(7f);
+        SceneManager.LoadScene("Menu");
     }
 }
